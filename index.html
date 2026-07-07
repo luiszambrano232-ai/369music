@@ -1,0 +1,508 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>369Music | Artista Urbano</title>
+
+  <meta name="description" content="369Music: artista urbano con sonido de calle, historia real y música con identidad propia.">
+
+  <link rel="icon" type="image/jpeg" href="./img/favicon.jpeg">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.css" rel="stylesheet">
+
+  <style>
+    :root {
+      --yellow: #f5c400;
+      --black: #050505;
+      --dark: #111;
+      --gray: #b5b5b5;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--black);
+      color: white;
+      font-family: Arial, sans-serif;
+    }
+
+    section {
+      scroll-margin-top: 85px;
+    }
+
+    .navbar {
+      background: rgba(0,0,0,.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(245,196,0,.25);
+    }
+
+    .logo {
+      color: var(--yellow);
+      font-weight: 900;
+      letter-spacing: 2px;
+      font-size: 28px;
+    }
+
+    .nav-link {
+      font-weight: 600;
+    }
+
+    .nav-link:hover {
+      color: var(--yellow) !important;
+    }
+
+    .hero {
+      min-height: 100vh;
+      background:
+        linear-gradient(90deg, rgba(0,0,0,.97), rgba(0,0,0,.58), rgba(0,0,0,.2)),
+        url("./img/369-hero.jpeg");
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: center;
+      position: relative;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 160px;
+      background: linear-gradient(to top, var(--black), transparent);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .badge-urban {
+      display: inline-block;
+      border: 1px solid var(--yellow);
+      color: var(--yellow);
+      padding: 8px 18px;
+      border-radius: 30px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      margin-bottom: 18px;
+    }
+
+    .hero h1 {
+      font-size: clamp(48px, 9vw, 96px);
+      font-weight: 950;
+      text-transform: uppercase;
+      line-height: .95;
+    }
+
+    .yellow {
+      color: var(--yellow);
+    }
+
+    .text-secondary {
+      color: var(--gray) !important;
+    }
+
+    .btn-yellow {
+      background: var(--yellow);
+      color: #000;
+      font-weight: 800;
+      border-radius: 40px;
+      padding: 13px 30px;
+      border: none;
+      transition: .3s;
+    }
+
+    .btn-yellow:hover {
+      background: white;
+      color: black;
+      transform: translateY(-2px);
+    }
+
+    .btn-outline-yellow {
+      border: 2px solid var(--yellow);
+      color: var(--yellow);
+      border-radius: 40px;
+      padding: 12px 30px;
+      font-weight: 800;
+      transition: .3s;
+    }
+
+    .btn-outline-yellow:hover {
+      background: var(--yellow);
+      color: black;
+      transform: translateY(-2px);
+    }
+
+    .section-title {
+      font-size: clamp(34px, 5vw, 52px);
+      font-weight: 950;
+      text-transform: uppercase;
+    }
+
+    .box-pro {
+      background: linear-gradient(135deg, #111, #1d1d1d);
+      border: 1px solid #333;
+      border-radius: 26px;
+      padding: 30px;
+      box-shadow: 0 20px 60px rgba(0,0,0,.45);
+    }
+
+    .video-link {
+      position: relative;
+      display: block;
+      border-radius: 22px;
+      overflow: hidden;
+      text-decoration: none;
+    }
+
+    .video-link img {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      filter: brightness(.65);
+      transition: .4s;
+    }
+
+    .video-link:hover img {
+      filter: brightness(.85);
+      transform: scale(1.03);
+    }
+
+    .play-button {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 90px;
+      color: white;
+      text-shadow: 0 10px 30px black;
+    }
+
+    .spotify-box iframe {
+      width: 100%;
+      border-radius: 22px;
+    }
+
+    .photo-card {
+      background: #111;
+      border: 1px solid #242424;
+      border-radius: 22px;
+      overflow: hidden;
+    }
+
+    .photo-card img {
+      width: 100%;
+      height: 360px;
+      object-fit: cover;
+      filter: grayscale(25%);
+      transition: .4s;
+    }
+
+    .photo-card:hover img {
+      filter: grayscale(0%);
+      transform: scale(1.06);
+    }
+
+    .bio-img {
+      width: 100%;
+      max-height: 560px;
+      object-fit: cover;
+      border-radius: 26px;
+      border: 1px solid #333;
+    }
+
+    .social a {
+      color: white;
+      font-size: 30px;
+      margin: 0 10px;
+      transition: .3s;
+      text-decoration: none;
+    }
+
+    .social a:hover {
+      color: var(--yellow);
+    }
+
+    .press-card {
+      background: #0d0d0d;
+      border: 1px solid #252525;
+      border-radius: 24px;
+      padding: 25px;
+      height: 100%;
+      transition: .3s;
+    }
+
+    .press-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--yellow);
+    }
+
+    .whatsapp-float {
+      position: fixed;
+      right: 22px;
+      bottom: 22px;
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      background: #25d366;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 30px;
+      z-index: 999;
+      text-decoration: none;
+      box-shadow: 0 10px 30px rgba(0,0,0,.5);
+    }
+
+    footer {
+      background: #000;
+      border-top: 1px solid #222;
+    }
+
+    @media(max-width: 768px) {
+      .hero {
+        text-align: center;
+        background-position: center;
+      }
+
+      .hero .btn {
+        width: 100%;
+        margin-bottom: 12px;
+      }
+
+      .box-pro {
+        padding: 18px;
+        text-align: center;
+      }
+
+      .photo-card img {
+        height: 430px;
+      }
+
+      .play-button {
+        font-size: 70px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+  <div class="container">
+    <a class="navbar-brand logo" href="#inicio">369MUSIC</a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="menu">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="#inicio">Inicio</a></li>
+        <li class="nav-item"><a class="nav-link" href="#video">Video</a></li>
+        <li class="nav-item"><a class="nav-link" href="#musica">Música</a></li>
+        <li class="nav-item"><a class="nav-link" href="#galeria">Galería</a></li>
+        <li class="nav-item"><a class="nav-link" href="#bio">Bio</a></li>
+        <li class="nav-item"><a class="nav-link" href="#booking">Booking</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<section class="hero" id="inicio">
+  <div class="container hero-content">
+    <div class="col-lg-7">
+      <span class="badge-urban">ARTISTA URBANO</span>
+
+      <h1>369 <span class="yellow">Music</span></h1>
+
+      <p class="lead mt-3 text-secondary">
+        Sonido de calle, historia real y música hecha con identidad.
+      </p>
+
+      <div class="mt-4">
+        <a href="#video" class="btn btn-yellow me-md-2">Ver video</a>
+        <a href="https://wa.me/56956364883" target="_blank" class="btn btn-outline-yellow">Contrataciones</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="py-5" id="video">
+  <div class="container">
+    <h2 class="section-title mb-4">Video <span class="yellow">Oficial</span></h2>
+
+    <div class="box-pro video-box">
+      <a href="https://youtu.be/El1UGnoI3KI?si=poylEMaKyZ6tddlF" target="_blank" class="video-link">
+        <img src="https://img.youtube.com/vi/El1UGnoI3KI/maxresdefault.jpg" alt="Video oficial 369Music">
+        <div class="play-button">
+          <i class="bi bi-play-circle-fill"></i>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="py-5 bg-black" id="musica">
+  <div class="container">
+    <h2 class="section-title mb-4">Escucha en <span class="yellow">Spotify</span></h2>
+
+    <div class="box-pro spotify-box">
+      <iframe 
+        src="https://open.spotify.com/embed/track/6i7A9V9iA7KA3Ttoxo6foH"
+        height="352"
+        frameborder="0"
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+        loading="lazy">
+      </iframe>
+    </div>
+
+    <div class="text-center mt-4">
+      <a href="https://open.spotify.com/track/6i7A9V9iA7KA3Ttoxo6foH?si=JOvV1A1CQWeLHk19uz6t6w&utm_source=copy-link" target="_blank" class="btn btn-yellow">
+        <i class="bi bi-spotify"></i> Abrir en Spotify
+      </a>
+
+      <a href="https://youtu.be/El1UGnoI3KI?si=poylEMaKyZ6tddlF" target="_blank" class="btn btn-outline-yellow ms-md-2 mt-2 mt-md-0">
+        <i class="bi bi-youtube"></i> Abrir en YouTube
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="py-5" id="galeria">
+  <div class="container">
+    <h2 class="section-title mb-4">Galería</h2>
+
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="photo-card">
+          <img src="./img/foto1.jpeg" alt="369Music foto 1">
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="photo-card">
+          <img src="./img/foto2.jpeg" alt="369Music foto 2">
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="photo-card">
+          <img src="./img/foto3.jpeg" alt="369Music foto 3">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="py-5 bg-black" id="bio">
+  <div class="container">
+    <div class="row align-items-center g-5">
+      <div class="col-md-5">
+        <img src="./img/foto4.jpeg" class="bio-img" alt="Artista 369Music">
+      </div>
+
+      <div class="col-md-7">
+        <p class="yellow fw-bold">LA HISTORIA</p>
+        <h2 class="section-title">Sobre <span class="yellow">369Music</span></h2>
+
+        <p class="lead text-secondary">
+          369Music representa una propuesta urbana con letras directas,
+          energía de calle y una identidad visual fuerte.
+        </p>
+
+        <p class="text-secondary">
+          Su música mezcla vivencias reales, melodías pegajosas y una estética
+          moderna pensada para conectar con el público joven.
+        </p>
+
+        <div class="social mt-4">
+          <a href="https://www.instagram.com/369music.studio?igsh=MWxxOWc5ZWg5NGo2bQ==" target="_blank" aria-label="Instagram">
+            <i class="bi bi-instagram"></i>
+          </a>
+
+          <a href="https://www.tiktok.com/@paiva369_?_r=1&_t=ZS-97qZE2oJW1F" target="_blank" aria-label="TikTok">
+            <i class="bi bi-tiktok"></i>
+          </a>
+
+          <a href="https://youtu.be/El1UGnoI3KI?si=poylEMaKyZ6tddlF" target="_blank" aria-label="YouTube">
+            <i class="bi bi-youtube"></i>
+          </a>
+
+          <a href="https://open.spotify.com/track/6i7A9V9iA7KA3Ttoxo6foH?si=JOvV1A1CQWeLHk19uz6t6w&utm_source=copy-link" target="_blank" aria-label="Spotify">
+            <i class="bi bi-spotify"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="py-5" id="booking">
+  <div class="container">
+    <h2 class="section-title mb-4">Booking & <span class="yellow">Press Kit</span></h2>
+
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="press-card">
+          <i class="bi bi-mic-fill yellow fs-1"></i>
+          <h4 class="fw-bold mt-3">Shows</h4>
+          <p class="text-secondary">
+            Contrataciones para eventos, discotecas, festivales y colaboraciones.
+          </p>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="press-card">
+          <i class="bi bi-camera-reels-fill yellow fs-1"></i>
+          <h4 class="fw-bold mt-3">Contenido</h4>
+          <p class="text-secondary">
+            Videoclips, sesiones, entrevistas y material promocional del artista.
+          </p>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="press-card">
+          <i class="bi bi-share-fill yellow fs-1"></i>
+          <h4 class="fw-bold mt-3">Redes</h4>
+          <p class="text-secondary">
+            Conecta con 369Music en Instagram, TikTok, YouTube y Spotify.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-center mt-5">
+      <a href="https://wa.me/56956364883" target="_blank" class="btn btn-yellow">
+        <i class="bi bi-whatsapp"></i> Contactar por WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer class="py-4 text-center">
+  <p class="mb-2 text-secondary">© 2026 369Music. Todos los derechos reservados.</p>
+
+  <div class="social">
+    <a href="https://www.instagram.com/369music.studio?igsh=MWxxOWc5ZWg5NGo2bQ==" target="_blank" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+    <a href="https://www.tiktok.com/@paiva369_?_r=1&_t=ZS-97qZE2oJW1F" target="_blank" aria-label="TikTok"><i class="bi bi-tiktok"></i></a>
+    <a href="https://youtu.be/El1UGnoI3KI?si=poylEMaKyZ6tddlF" target="_blank" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+    <a href="https://open.spotify.com/track/6i7A9V9iA7KA3Ttoxo6foH?si=JOvV1A1CQWeLHk19uz6t6w&utm_source=copy-link" target="_blank" aria-label="Spotify"><i class="bi bi-spotify"></i></a>
+  </div>
+</footer>
+
+<a href="https://wa.me/56956364883" target="_blank" class="whatsapp-float" aria-label="WhatsApp">
+  <i class="bi bi-whatsapp"></i>
+</a>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
